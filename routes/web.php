@@ -18,9 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/session/get', [SessionController::class,'getSessionData'])->name('session.get');
-Route::get('/session/set', [SessionController::class,'storeSessionData'])->name('session.set');
-Route::get('/session/delete', [SessionController::class,'deleteSessionData'])->name('session.delete');
+Route::get('/nvk-session-get',[Sessioncontroller::class,'nvkGetSession'])->name('session.get');
+Route::get('/nvk-session-store',[Sessioncontroller::class,'nvkstoreSessionData'])->name('session.store');
+Route::get('/nvk-session-delete',[Sessioncontroller::class,'nvkdeleteSession'])->name('session.delete');
 
-Route::get('/login',[LoginController::class,'index'])->name('login.index');
-Route::post('/login',[LoginController::class,'loginSubmit'])->name('login.submit');
+Route::get('/nvk-login',[LoginController::class,'nvklogin'])->name('session.login');
+Route::get('/nvk-logout',[LoginController::class,'nvklogin'])->name('session.login');
+Route::post('/nvk-login',[LoginController::class,'nvkloginSubmit'])->name('session.submit');

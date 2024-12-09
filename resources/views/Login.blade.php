@@ -10,33 +10,47 @@
 <body>
     <section class="container">
         <div class="row">
-            <div class="col-md-6 offset-md-3 my-3">
-                <div class="card">
-                    <div class="card-header">
-                        <h1>Login</h1>
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+                <form action="{{route('session.submit')}}" method="post" class="bg-white p-4 rounded shadow-sm" style="width: 600px; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+                    @csrf
+                    <div >
+                        <h1>NVK-login</h1>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{route('login.submit')}}">
-                        @csrf
-                        <div class="form-group">
-                            <label for="fullName">FullName:</label><br>
-                            <input type="text" name="fullName" id="fullName" class="form-control">
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email </label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
+                                @error('email')
+                                <span class="text-danger"> {{$message}}  </span>
+                                @enderror
+                                <span id="email-error"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label><br>
-                            <input type="email" name="email" id="email" class="form-control">
+                        <div class="mb-3">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">password </label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="xxxx">
+                                @error('password')
+                                <span class="text-danger"> {{$message}}  </span>
+                                @enderror
+                                <span id="email-error"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label><br>
-                            <input type="password"	class="form-control"
-                            name="password" id="password" value="12346a@">
-                        </div>
-                        <br><button type="submit" class="btn btn-primary mt-3">Submit</button>
-                        </form>
                     </div>
-                </div>
+
+                    <div class="card-footer">
+                        <button class="btn btn-primary">Submit</button>
+                        @if(Session::has('nvk-error'))
+                            <div class="alert alert-danger">
+                                    {{Session::get('nvk-error')}}
+                            </div>
+                        @endif
+                    </div>
+
+                </form>
             </div>
-        </div>
+    </div>
     </section>
 </body>
 </html>

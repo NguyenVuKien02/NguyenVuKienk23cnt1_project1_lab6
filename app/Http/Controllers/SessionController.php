@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
     #Đọc dữ liệu từ session
-    public function getSessionData(Request $request)
+    public function nvkGetSession(Request $request)
     {
         if($request->session()->has('name'))
         {
@@ -19,14 +19,14 @@ class SessionController extends Controller
         }
     }
     #Lưu dữ liệu vào session
-    public function storeSessionData(Request $request)
+    public function nvkstoreSessionData(Request $request)
     {
         $request->session()->put('name','Devmaster Academy');
         echo "<h2> Dữ liệu đã được lưu và session </h2>";
     }
 
     #Xóa dữ liệu trong session
-    public function deleteSessionData(Request $request)
+    public function nvkdeleteSession(Request $request)
     {
         $request->session()->forget('name');
         echo "<h2> Dữ liệu đã được xóa khỏi session </h2>";
